@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// Circle 圆
 type Circle struct {
 	radius float64
 }
@@ -28,15 +29,32 @@ func main() {
 	fmt.Printf("交换后：a: %d;\tb:%d\n", swapa, swapb)
 
 	////////////////闭包///////////////////
-	add_func := add_closure(1, 2)
-	fmt.Println(add_func())
-	fmt.Println(add_func())
-	fmt.Println(add_func())
+	addFunc := addClosure(1, 2)
+	fmt.Println(addFunc())
+	fmt.Println(addFunc())
+	fmt.Println(addFunc())
 
 	//////////////圆面积//////////////
 	var c1 Circle
 	c1.radius = 10.00
 	fmt.Println("圆的面积：", c1.getArea())
+
+	/////////////数组//////////////
+	var balance = [5]int{1, 2, 3, 4, 5}
+	getAverage(balance[:], 5)
+
+}
+
+func getAverage(arr []int, size int) {
+	var i, sum int
+	var avg float32
+
+	for i = 0; i < size; i++ {
+		sum += arr[i]
+	}
+
+	avg = float32(sum) / float32(size)
+	fmt.Println(avg)
 
 }
 
@@ -44,7 +62,7 @@ func (c Circle) getArea() float64 {
 	return 3.14 * c.radius * c.radius
 }
 
-func add_closure(x1, x2 int) func() (int, int) {
+func addClosure(x1, x2 int) func() (int, int) {
 	i := 1
 	return func() (int, int) {
 		i++
