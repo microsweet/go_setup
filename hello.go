@@ -1,3 +1,4 @@
+// hello world
 package main
 
 import (
@@ -8,6 +9,8 @@ import (
 	"log"
 	"math"
 	"os"
+
+	"github.com/shopspring/decimal"
 )
 
 // Circle 圆
@@ -16,6 +19,7 @@ type Circle struct {
 }
 
 func main() {
+	testdeci()
 	fmt.Println("Hello world!")
 
 	var b, c int = 2, 3
@@ -163,4 +167,15 @@ func sin() {
 	png.Encode(file, pic) //将image信息写入文件中
 	// 关闭文件
 	file.Close()
+}
+func testdeci() {
+
+	x := 74.96
+	y := 20.48
+	fmt.Println(x - y)
+	xd := decimal.NewFromFloat(x)
+	yd := decimal.NewFromFloat(y)
+	c := xd.Sub(yd)
+	cc := c.String()
+	fmt.Println(xd.Sub(yd), cc)
 }
